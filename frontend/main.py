@@ -2,7 +2,6 @@
 from flask import Flask, render_template, request
 import numpy as np
 import tensorflow as tf
-import csv
 from keras.models import load_model
 
 app = Flask(__name__)
