@@ -41,9 +41,9 @@
     <div id="predictionResult"></div>
 
     <script>
-      document
-        .getElementById("predictionForm")
-        .addEventListener("submit", function (event) {
+      document.getElementById("predictionForm").addEventListener(
+        "submit",
+        function (event) {
           event.preventDefault(); // Prevent the form from submitting normally
 
           // Get form data
@@ -54,16 +54,19 @@
             method: "POST",
             body: formData,
           })
-            .then((response) => response.json())
-            .then((data) => {
-              // Display prediction result
-              document.getElementById("predictionResult").innerHTML =
-                "<h2>Prediction Result:</h2>";
-              document.getElementById("predictionResult").innerHTML +=
-                "<p>" + data.prediction + "</p>";
+            .then((response) => response.text())
+            .then((predicted_class) => {
+              // Display predicted class on the webpage
+              document.getElementById(
+                "predictionResult"
+              ).innerHTML = `<p>Predicted class: ${predicted_class}</p>`;
             })
-            .catch((error) => console.error("Error:", error));
-        });
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+        //.catch((error) => console.error("Error:", error));
+      );
     </script>
   </body>
 </html>
