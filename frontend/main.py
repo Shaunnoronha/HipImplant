@@ -42,7 +42,7 @@ def predict():
         predicted_class = np.argmax(prediction, axis=1)[0]
 
         # Return the predicted class
-        return f"<p>Predicted class: {predicted_class}</p>"
+        return str(predicted_class)
 
 if __name__ == '__main__':
     app.run(debug=True)
